@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="NordGroupMedi:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/NordGroupMedi_jar</output-path>
+    <root id="archive" name="NordGroupMedi.jar">
+      <element id="module-output" name="NordGroupMedi" />
+    </root>
+  </artifact>
+</component>
