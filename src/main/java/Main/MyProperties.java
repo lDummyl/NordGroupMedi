@@ -14,20 +14,19 @@ public class MyProperties {
     private static String logsArchiveFolder;
     private static String companyBigLogoAddress;
     private static String companySmallLogoAddress;
-    private static int scanFriquencyInSec;
+
 
     static {
         FileInputStream fileInputStream;
         Properties prop = new Properties();
         try {
+
             fileInputStream = new FileInputStream(PATH_TO_PROPERTIES);
             prop.load(fileInputStream);
             inputFolder = prop.getProperty("inputFolder");
             outputFolder = prop.getProperty("outputFolder");
             tempFolder = prop.getProperty("tempFolder");
             logsArchiveFolder = prop.getProperty("archiveFolder");
-
-            scanFriquencyInSec =  Integer.parseInt(prop.getProperty("scanFriquencyInSec"));
             companyBigLogoAddress = prop.getProperty("companyBigLogoAddress");
             companySmallLogoAddress = prop.getProperty("companySmallLogoAddress");
 
@@ -42,10 +41,6 @@ public class MyProperties {
 
     public static String getOutputFolder() {
         return outputFolder;
-    }
-
-    public static int getScanFriquencyInSec() {
-        return scanFriquencyInSec;
     }
 
     public static String getTempFolder() {

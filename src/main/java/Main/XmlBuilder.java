@@ -5,7 +5,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 
-import javax.swing.*;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -34,6 +34,8 @@ public class XmlBuilder {
 
             Element root = doc.createElement("output");
             doc.appendChild(root);
+            boolean empty = XmlProcesser.daysMap.isEmpty();
+
 
             for (Map.Entry<LocalDate, Map<User, Map<URL, Average>>> mapEntry : XmlProcesser.daysMap.entrySet()) {
 
@@ -74,18 +76,21 @@ public class XmlBuilder {
                         user.appendChild(average);
                     }
                 }
+
+
+                TransformerFactory transformerFactory = TransformerFactory.newInstance();
+                Transformer transformer = transformerFactory.newTransformer();
+                DOMSource domSource = new DOMSource(doc);
+
+                StreamResult streamResult = new StreamResult(file);
+                transformer.transform(domSource,streamResult);
+
+                Interactive.wellDoneReport();
+                FileManager.processTempFiles();
+
+                System.out.println("File Saved!");
             }
 
-            TransformerFactory transformerFactory = TransformerFactory.newInstance();
-            Transformer transformer = transformerFactory.newTransformer();
-            DOMSource domSource = new DOMSource(doc);
-
-            StreamResult streamResult = new StreamResult(file);
-            transformer.transform(domSource,streamResult);
-
-            Interactive.wellDoneReport();
-            FileManager.processTempFiles();
-            System.out.println("File Saved!");
 
         } catch (ParserConfigurationException e) {
             e.printStackTrace();

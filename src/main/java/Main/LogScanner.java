@@ -8,12 +8,9 @@ import java.nio.file.Path;
 public class LogScanner {
 
     private final Path logsFolder;
-    private boolean active = true;
-    private long timePeriod;  //in millis
-//            1000 * MyProperties.getScanFriquencyInSec();
+    private boolean active;
+    private long timePeriod;
 
-    // TODO: 23.08.2018 delete
-//    public static int counter = 0;//temp
 
     public LogScanner(Path logsFolder) {
         this.logsFolder = logsFolder;
@@ -27,11 +24,8 @@ public class LogScanner {
 
     public void startScanner1()  {
         while (active) {
-            System.out.println("scannin");
+            System.out.println("scanning");
             scanFolder();
-            // TODO: 23.08.2018 delete
-//            counter++;//temp
-//            if (counter>7) shutDown();//temp
         }
     }
     private void scanFolder(){

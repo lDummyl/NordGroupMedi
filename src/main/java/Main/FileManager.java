@@ -34,23 +34,6 @@ public class FileManager {
         return null;
     }
 
-    // TODO: 23.08.2018 delete from here...
-    public static void sendToSourceFolder(Path path) {
-        sendFileTo(path, Main.logsFolder);
-    }
-
-    public static void moveFilesBack(){
-        try {
-            Files.walk(XmlProcesser.archive)
-                    .filter(p -> p.toString().endsWith(".xml"))
-                    .distinct()
-                    .forEach(FileManager::sendToSourceFolder);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    // TODO: 23.08.2018 ..to here.
-
     public static void archiveFile(Path path) {
         toArchive.add(path);
 

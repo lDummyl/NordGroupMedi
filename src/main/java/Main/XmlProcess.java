@@ -89,10 +89,7 @@ public class XmlProcess implements Runnable {
     }
 
     private void sendToArchive(Path path) {
-
         FileManager.archiveFile(path);
-        // TODO: 23.08.2018 remove
-//        FileManager.sendFileTo(path, XmlProcesser.archive);
     }
 
 }
