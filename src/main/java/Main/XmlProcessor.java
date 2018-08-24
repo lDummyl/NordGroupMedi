@@ -14,7 +14,7 @@ public class XmlProcessor {
 
     static Path archive = Paths.get(MyProperties.getLogsArchiveFolder());
     static Queue<Path> queue = new LinkedList<>();
-    static ExecutorService threadService = Executors.newFixedThreadPool(10);
+    static ExecutorService threadService;
     static TreeMap<LocalDate, Map<User, Map<URL,Average>>> daysMap = new TreeMap<>();
     private static boolean processing;
     static Thread processThread;
@@ -30,7 +30,6 @@ public class XmlProcessor {
     public static void sendToQueue(Path path){
 
         invokeProcessThread();
-
         Path tempFolder = Paths.get(MyProperties.getTempFolder());
         Path pathInTemp = FileManager.sendFileTo(path, tempFolder);
         queue.add(pathInTemp);
@@ -70,6 +69,7 @@ public class XmlProcessor {
 
     private static void startQueueProcessing() {
         processing = true;
+        threadService = Executors.newFixedThreadPool(10);
         while(processing){
             Path path = getNextByQueue();
             if (path !=null){

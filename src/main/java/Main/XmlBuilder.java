@@ -19,6 +19,7 @@ import java.io.File;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.TreeMap;
 
 
 public class XmlBuilder {
@@ -31,7 +32,6 @@ public class XmlBuilder {
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = docFactory.newDocumentBuilder();
             Document doc = documentBuilder.newDocument();
-
             Element root = doc.createElement("output");
             doc.appendChild(root);
 
@@ -85,7 +85,7 @@ public class XmlBuilder {
 
                 Interactive.wellDoneReport();
                 FileManager.processTempFiles();
-
+                XmlProcessor.daysMap = new TreeMap<>();
                 System.out.println("File Saved!");
             }
 

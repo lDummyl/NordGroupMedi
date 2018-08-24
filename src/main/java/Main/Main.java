@@ -16,11 +16,9 @@ public class Main {
 
 
     public static void main(String[] args) {
-
         Interactive.geetingsImage();
         logScanner = new LogScanner(logsFolder);
         MainWindow.invoke();
-
     }
 }
 
