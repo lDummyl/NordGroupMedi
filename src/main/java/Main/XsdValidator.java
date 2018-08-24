@@ -18,7 +18,7 @@ import java.nio.file.Paths;
 
 public class XsdValidator {
 
-    public static final Path xsdPath = MyProperties.getXsdPath();
+    public static final Path xsdPath = Paths.get(MyProperties.getXsdPath());
 
     public void validate(File xmlFile) {
 

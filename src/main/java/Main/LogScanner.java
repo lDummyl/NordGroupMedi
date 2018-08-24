@@ -1,8 +1,10 @@
 package main.java.Main;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.concurrent.TimeUnit;
 
 
 public class LogScanner {
@@ -24,7 +26,8 @@ public class LogScanner {
 
     public void startScanner1()  {
         while (active) {
-            System.out.println("scanning");
+
+            System.out.println("scanning: " + logsFolder.toFile().getAbsolutePath());
             scanFolder();
         }
     }
@@ -43,6 +46,15 @@ public class LogScanner {
     }
     public void shutDown(){
         active = false;
+        try {
+            XmlProcessor.threadService.shutdown();
+            XmlProcessor.threadService.awaitTermination(24L, TimeUnit.HOURS);
+            if (!XmlProcessor.daysMap.isEmpty()) {
+                XmlBuilder.createXmlReport();
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public boolean isActive() {

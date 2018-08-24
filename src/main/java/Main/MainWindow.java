@@ -1,6 +1,7 @@
 package main.java.Main;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -90,9 +91,6 @@ public class MainWindow extends JFrame {
             button.setText(buttonTextVariants[1]);
         }else{
             Main.logScanner.shutDown();
-            if (!XmlProcessor.daysMap.isEmpty()) {
-                XmlBuilder.createXmlReport();
-            }
             button.setText(buttonTextVariants[0]);
         }
         button.updateUI();

@@ -34,8 +34,6 @@ public class XmlBuilder {
 
             Element root = doc.createElement("output");
             doc.appendChild(root);
-            boolean empty = XmlProcessor.daysMap.isEmpty();
-
 
             for (Map.Entry<LocalDate, Map<User, Map<URL, Average>>> mapEntry : XmlProcessor.daysMap.entrySet()) {
 

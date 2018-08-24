@@ -12,6 +12,7 @@ public class Interactive {
     public static void geetingsImage()  {
 
         try {
+
             String path = MyProperties.getCompanyBigLogoAddress();
             File file = new File(path);
             BufferedImage image = ImageIO.read(file);

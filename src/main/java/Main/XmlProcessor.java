@@ -16,7 +16,6 @@ public class XmlProcessor {
     static Queue<Path> queue = new LinkedList<>();
     static ExecutorService threadService = Executors.newFixedThreadPool(10);
     static TreeMap<LocalDate, Map<User, Map<URL,Average>>> daysMap = new TreeMap<>();
-
     private static boolean processing;
     static Thread processThread;
 
@@ -39,6 +38,8 @@ public class XmlProcessor {
 
     private static void callThread(Path path){
         threadService.submit(new XmlProcess(path));
+
+
     }
 
      static synchronized void  insertDataToMainMap(Map.Entry<LocalDate, Integer> entry, User user, URL url) {
