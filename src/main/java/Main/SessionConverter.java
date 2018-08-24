@@ -23,7 +23,8 @@ public class SessionConverter {
 
     public  List<Session> getSessionInstance(File xmlFile) {
         try {
-            XsdValidator.validate(xmlFile);
+
+            new XsdValidator().validate(xmlFile);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xmlFile);
@@ -44,6 +45,8 @@ public class SessionConverter {
         } catch (SAXException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e){
             e.printStackTrace();
         }
         return listOfSessions;

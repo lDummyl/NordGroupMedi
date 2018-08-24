@@ -34,9 +34,12 @@ public class Interactive {
     }
 
     public static void wellDoneReport() {
-
         ImageIcon imageIcon = new ImageIcon(MyProperties.getCompanySmallLogoAddress());
         JOptionPane.showMessageDialog(null,"Отчет сформирован", "info",JOptionPane.NO_OPTION,imageIcon);
-
     }
+    public static void errorReport(String msg) {
+        ImageIcon imageIcon = new ImageIcon(MyProperties.getCompanySmallLogoAddress());
+        JOptionPane.showMessageDialog(null,msg, "error",JOptionPane.NO_OPTION,imageIcon);
+    }
+
 }

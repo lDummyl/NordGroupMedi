@@ -38,7 +38,7 @@ public class XmlProcess implements Runnable {
             Map<LocalDate, Integer> daysQty = getDaysQty(timestamp, seconds);
             for (Map.Entry<LocalDate, Integer> entry : daysQty.entrySet()) {
 
-                XmlProcesser.insertDataToMainMap(entry, user, url);
+                XmlProcessor.insertDataToMainMap(entry, user, url);
 
             }
         } catch (MalformedURLException e) {

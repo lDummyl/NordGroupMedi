@@ -15,7 +15,7 @@ public class MainWindow extends JFrame {
 
 
     public MainWindow() {
-        super("Logs processer");
+        super("Logs processor");
         this.setBounds(100,100,400,100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ImageIcon imageIcon = new ImageIcon(MyProperties.getCompanySmallLogoAddress());
@@ -90,7 +90,7 @@ public class MainWindow extends JFrame {
             button.setText(buttonTextVariants[1]);
         }else{
             Main.logScanner.shutDown();
-            if (!XmlProcesser.daysMap.isEmpty()) {
+            if (!XmlProcessor.daysMap.isEmpty()) {
                 XmlBuilder.createXmlReport();
             }
             button.setText(buttonTextVariants[0]);

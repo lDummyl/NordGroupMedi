@@ -33,7 +33,7 @@ public class LogScanner {
             Files.walk(logsFolder)
                     .filter(p -> p.toString().endsWith(".xml"))
                     .distinct()
-                    .forEach(XmlProcesser::sendToQueue);
+                    .forEach(XmlProcessor::sendToQueue);
             Thread.sleep(timePeriod);
         } catch (InterruptedException e) {
             e.printStackTrace();

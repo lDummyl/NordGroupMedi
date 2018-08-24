@@ -2,6 +2,8 @@ package main.java.Main;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Properties;
 
 public class MyProperties {
@@ -14,7 +16,7 @@ public class MyProperties {
     private static String logsArchiveFolder;
     private static String companyBigLogoAddress;
     private static String companySmallLogoAddress;
-
+    private static  Path xsdPath;
 
     static {
         FileInputStream fileInputStream;
@@ -29,6 +31,8 @@ public class MyProperties {
             logsArchiveFolder = prop.getProperty("archiveFolder");
             companyBigLogoAddress = prop.getProperty("companyBigLogoAddress");
             companySmallLogoAddress = prop.getProperty("companySmallLogoAddress");
+            String xsdLocation = prop.getProperty("xsdLocation");
+            xsdPath = Paths.get(xsdLocation);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -57,5 +61,9 @@ public class MyProperties {
 
     public static String getCompanySmallLogoAddress() {
         return companySmallLogoAddress;
+    }
+
+    public static Path getXsdPath() {
+        return xsdPath;
     }
 }

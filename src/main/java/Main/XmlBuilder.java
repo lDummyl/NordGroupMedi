@@ -34,10 +34,10 @@ public class XmlBuilder {
 
             Element root = doc.createElement("output");
             doc.appendChild(root);
-            boolean empty = XmlProcesser.daysMap.isEmpty();
+            boolean empty = XmlProcessor.daysMap.isEmpty();
 
 
-            for (Map.Entry<LocalDate, Map<User, Map<URL, Average>>> mapEntry : XmlProcesser.daysMap.entrySet()) {
+            for (Map.Entry<LocalDate, Map<User, Map<URL, Average>>> mapEntry : XmlProcessor.daysMap.entrySet()) {
 
                 String dateToWrite = mapEntry.getKey().toString();
                 Element logday = doc.createElement("logday");

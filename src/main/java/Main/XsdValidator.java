@@ -18,11 +18,13 @@ import java.nio.file.Paths;
 
 public class XsdValidator {
 
-    private static final Path xsdPath = Paths.get("src\\main\\resources\\xsd\\log.xsd");
+    public static final Path xsdPath = MyProperties.getXsdPath();
 
-    public static void validate(File xmlFile) {
+    public void validate(File xmlFile) {
+
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         try {
+
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             documentBuilderFactory.setNamespaceAware(true);
             DocumentBuilder parser = documentBuilderFactory.newDocumentBuilder();
@@ -31,11 +33,16 @@ public class XsdValidator {
             Schema schema = schemaFactory.newSchema(xsdFile);
             Validator validator = schema.newValidator();
             validator.validate(new DOMSource(document));
+
         } catch (SAXException e) {
+            Interactive.errorReport(String.format("Фаил %s не прошел валидацию.", xmlFile.getName()));
             e.printStackTrace();
         } catch (ParserConfigurationException e) {
+            Interactive.errorReport(String.format("Фаил %s не прошел валидацию.", xmlFile.getName()));
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

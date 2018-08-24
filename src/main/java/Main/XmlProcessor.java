@@ -10,7 +10,7 @@ import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class XmlProcesser {
+public class XmlProcessor {
 
     static Path archive = Paths.get(MyProperties.getLogsArchiveFolder());
     static Queue<Path> queue = new LinkedList<>();
