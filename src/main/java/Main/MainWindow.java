@@ -1,7 +1,6 @@
 package main.java.Main;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.concurrent.TimeUnit;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -87,7 +86,7 @@ public class MainWindow extends JFrame {
 
         boolean scannerActive = Main.logScanner.isActive();
         if (!scannerActive) {
-            Main.logScanner.startScanner();
+            Main.logScanner.callScanner();
             button.setText(buttonTextVariants[1]);
         }else{
             Main.logScanner.shutDown();
