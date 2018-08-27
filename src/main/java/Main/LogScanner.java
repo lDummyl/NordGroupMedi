@@ -45,8 +45,10 @@ public class LogScanner {
     public void shutDown(){
         active = false;
         try {
-            XmlProcessor.threadService.shutdown();
-            XmlProcessor.threadService.awaitTermination(5L, TimeUnit.SECONDS);
+            if (XmlProcessor.threadService !=null){
+                XmlProcessor.threadService.shutdown();
+                XmlProcessor.threadService.awaitTermination(5L, TimeUnit.SECONDS);
+            }
             if (!XmlProcessor.daysMap.isEmpty()) {
                 XmlBuilder.createXmlReport();
             }
